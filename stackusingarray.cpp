@@ -5,10 +5,10 @@ class stackusingarray{
 	int nextindex;
 	int capacity;
 	public:
-		stackusingarray(){
-			arr=new int[4];
+		stackusingarray(int totalsize ){
+			arr=new int[totalsize];
 			nextindex=0;
-			capacity=4;
+			capacity=totalsize;
 		}
 		//return the number of elements in the stack
 		int size(){
@@ -27,13 +27,8 @@ class stackusingarray{
 		void push(int element){
 			// while inserting element in the stck we need to check whether our stack gets overflow or not
 			if(nextindex==capacity){
-			int *newarr=new int[2*capacity];
-			for(int i=0;i<capacity;i++){
-				newarr[i]=arr[i];
-			}
-			capacity*=2;
-			delete[] arr;
-			arr=newarr;
+				cout<<"stack is full"<<endl;
+				return;
 			}
 			arr[nextindex]=element;
 			nextindex++;
@@ -58,7 +53,7 @@ class stackusingarray{
 		
 };
 int main(){
-	stackusingarray s;
+	stackusingarray s(4);
 	s.push(10);
 	s.push(20);
 	s.push(30);
