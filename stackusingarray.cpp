@@ -27,8 +27,13 @@ class stackusingarray{
 		void push(int element){
 			// while inserting element in the stck we need to check whether our stack gets overflow or not
 			if(nextindex==capacity){
-				cout<<"stack is full"<<endl;
-				return;
+				int *newarr=new int[2*capacity];
+				for(int i=0;i<capacity;i++){
+					newarr[i]=arr[i];
+				}
+				capacity*=2;
+				delete[] arr;
+				newarr=arr;
 			}
 			arr[nextindex]=element;
 			nextindex++;
